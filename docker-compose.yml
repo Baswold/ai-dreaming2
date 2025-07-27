@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  dreaming-ai:
+    build: .
+    container_name: dreaming-ai
+    ports:
+      - "11434:11434"  # Ollama API port
+    volumes:
+      - ./dream_outputs:/app/dream_outputs
+      - ./dreaming_memory.db:/app/dreaming_memory.db
+      - ./config.json:/app/config.json
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+

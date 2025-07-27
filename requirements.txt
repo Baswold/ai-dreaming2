@@ -1,0 +1,12 @@
+requests>=2.31.0
+sqlite3
+pathlib
+dataclasses
+typing
+datetime
+json
+threading
+logging
+random
+time
+

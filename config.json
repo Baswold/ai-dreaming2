@@ -1,0 +1,17 @@
+{
+  "model": "qwen2.5:0.5b",
+  "ollama_url": "http://localhost:11434",
+  "db_path": "dreaming_memory.db",
+  "output_dir": "dream_outputs",
+  "reasoning_strategies": {
+    "free_association": 0.3,
+    "logical_deduction": 0.2,
+    "creative_what_if": 0.2,
+    "pattern_recognition": 0.15,
+    "analogical_reasoning": 0.15
+  },
+  "interest_threshold": 0.4,
+  "dream_interval": 8,
+  "max_thoughts_per_session": 50
+}
+
