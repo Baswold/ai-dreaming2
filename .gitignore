@@ -1,0 +1,8 @@
+# macOS artifacts
+.DS_Store
+
+# SQLite databases
+*.db
+
+# generated logs and outputs
+dream_outputs/
