@@ -1,0 +1,4 @@
+# Ignore local output files
+*.db
+/dream_outputs/
+__pycache__/
