@@ -72,5 +72,5 @@ To observe the agents' thinking process and conversations, a monitoring interfac
 ## 5. Future Considerations
 
 *   **Persistent Memory:** Implementing a more sophisticated memory system for the AI to retain long-term learnings and context across sessions.
-*   **Goal-Oriented Dreaming:** While the initial goal is 
+*   **Goal-Oriented Dreaming:** While the initial goal is to facilitate open-ended, curiosity-driven conversation, future iterations may experiment with optional objectives that guide the agents toward collaborative tasks.
 
