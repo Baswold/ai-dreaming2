@@ -6,13 +6,23 @@ services:
     container_name: dreaming-ai
     ports:
       - "11434:11434"  # Ollama API port
+      - "8080:8080"    # Web monitoring interface
     volumes:
       - ./dream_outputs:/app/dream_outputs
       - ./dreaming_memory.db:/app/dreaming_memory.db
       - ./config.json:/app/config.json
+      - ollama_data:/root/.ollama  # Persistent model storage
     environment:
       - OLLAMA_HOST=0.0.0.0
+      - OLLAMA_MODELS=/root/.ollama/models
     stdin_open: true
     tty: true
     restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          memory: 4G  # Ensure enough memory for LLMs
+
+volumes:
+  ollama_data:
 

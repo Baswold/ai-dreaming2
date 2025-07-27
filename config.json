@@ -1,6 +1,6 @@
 {
-  "model": "qwen2.5:0.5b",
-  "ollama_url": "http://localhost:11434",
+  "model": "phi-2",
+  "ollama_url": "http://localhost:1234/v1",
   "db_path": "dreaming_memory.db",
   "output_dir": "dream_outputs",
   "reasoning_strategies": {

@@ -1,0 +1,40 @@
+{
+  "models": ["phi-2", "google/gemma-3-4b", "gemma-3n-e2b-it"],
+  "agent_count": 3,
+  "ollama_url": "http://localhost:1234/v1",
+  "db_path": "multi_agent_memory.db",
+  "conversation_duration": 300,
+  "max_exchanges_per_conversation": 20,
+  "personality_weights": {
+    "curious": 0.15,
+    "analytical": 0.15,
+    "creative": 0.15,
+    "methodical": 0.1,
+    "intuitive": 0.1,
+    "skeptical": 0.1,
+    "optimistic": 0.1,
+    "philosophical": 0.05,
+    "practical": 0.05,
+    "imaginative": 0.05
+  },
+  "conversation_topics": [
+    "The nature of consciousness and artificial minds",
+    "Patterns that emerge in complex systems",
+    "The relationship between creativity and logic",
+    "How information flows and transforms",
+    "The connection between mathematics and reality",
+    "What makes something truly beautiful or elegant",
+    "The paradoxes that arise in self-reference",
+    "How emergence creates something greater than parts",
+    "The role of randomness in creation",
+    "What lies beyond current understanding"
+  ],
+  "reasoning_temperature": {
+    "min": 0.7,
+    "max": 1.1
+  },
+  "response_length": {
+    "min_tokens": 50,
+    "max_tokens": 150
+  }
+}

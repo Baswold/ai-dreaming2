@@ -119,26 +119,27 @@ class ReasoningEngine:
         prompt = self._build_prompt(context_str, mode)
         
         try:
+            # LM Studio uses OpenAI-compatible API format
             response = requests.post(
-                f"{self.ollama_url}/api/generate",
+                f"{self.ollama_url}/chat/completions",
                 json={
                     "model": self.model,
-                    "prompt": prompt,
-                    "stream": False,
-                    "options": {
-                        "temperature": random.uniform(0.7, 1.2),  # Creativity variance
-                        "top_p": 0.9,
-                        "max_tokens": 200
-                    }
+                    "messages": [
+                        {"role": "user", "content": prompt}
+                    ],
+                    "temperature": random.uniform(0.7, 1.2),
+                    "top_p": 0.9,
+                    "max_tokens": 200,
+                    "stream": False
                 },
                 timeout=30
             )
             
             if response.status_code == 200:
                 result = response.json()
-                return result.get('response', '').strip()
+                return result.get('choices', [{}])[0].get('message', {}).get('content', '').strip()
             else:
-                logging.error(f"Ollama API error: {response.status_code}")
+                logging.error(f"LM Studio API error: {response.status_code}")
                 return "I notice something interesting about the nature of thought itself..."
                 
         except Exception as e:

@@ -1,0 +1,2 @@
+2025-07-27 15:43:20,442 - ERROR - Error generating thought: HTTPConnectionPool(host='localhost', port=1234): Read timed out. (read timeout=30)
+2025-07-27 15:44:32,076 - ERROR - Error generating thought: HTTPConnectionPool(host='localhost', port=1234): Read timed out. (read timeout=30)
