@@ -111,10 +111,11 @@ class ReasoningEngine:
             mode = random.choice(self.reasoning_modes)
         
         # Build context string from recent thoughts
+        # Present thoughts naturally without labels to avoid directing the AI
         context_str = ""
         if context:
             recent_thoughts = context[-5:]  # Last 5 thoughts for context
-            context_str = "\n".join([f"[{t.thought_type.upper()}] {t.content}" for t in recent_thoughts])
+            context_str = "\n".join([t.content for t in recent_thoughts])
         
         prompt = self._build_prompt(context_str, mode)
         
@@ -147,21 +148,29 @@ class ReasoningEngine:
     
     def _build_prompt(self, context: str, mode: str) -> str:
         """Build appropriate prompt based on reasoning mode"""
-        base_context = f"Previous thoughts:\n{context}\n\n" if context else ""
-        
+        # For true autonomous thinking, we provide minimal to no directive prompts
+        # The AI should think naturally without being asked to accomplish anything
+
+        if not context:
+            # No context yet - start with pure silence/openness
+            return "..."
+
+        # Just provide context - let the thought continue naturally
+        # Different modes just slightly flavor the context presentation, not direct the thinking
+
         mode_prompts = {
-            'free_association': f"{base_context}Let your mind wander freely. What comes to mind next?",
-            
-            'logical_deduction': f"{base_context}Following logical steps, what conclusion emerges?",
-            
-            'creative_what_if': f"{base_context}What if we imagined something completely different? What if...",
-            
-            'pattern_recognition': f"{base_context}Looking at these ideas, what patterns or connections do you notice?",
-            
-            'analogical_reasoning': f"{base_context}How might this be similar to something else entirely? What analogy comes to mind?"
+            'free_association': f"{context}\n\n...",
+
+            'logical_deduction': f"{context}\n\nAnd...",
+
+            'creative_what_if': f"{context}\n\n...",
+
+            'pattern_recognition': f"{context}\n\n...",
+
+            'analogical_reasoning': f"{context}\n\n..."
         }
-        
-        return mode_prompts.get(mode, f"{base_context}What thought arises naturally?")
+
+        return mode_prompts.get(mode, f"{context}\n\n...")
 
 
 class InterestDetector:
