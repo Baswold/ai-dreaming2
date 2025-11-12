@@ -147,21 +147,15 @@ class ReasoningEngine:
     
     def _build_prompt(self, context: str, mode: str) -> str:
         """Build appropriate prompt based on reasoning mode"""
-        base_context = f"Previous thoughts:\n{context}\n\n" if context else ""
-        
-        mode_prompts = {
-            'free_association': f"{base_context}Let your mind wander freely. What comes to mind next?",
-            
-            'logical_deduction': f"{base_context}Following logical steps, what conclusion emerges?",
-            
-            'creative_what_if': f"{base_context}What if we imagined something completely different? What if...",
-            
-            'pattern_recognition': f"{base_context}Looking at these ideas, what patterns or connections do you notice?",
-            
-            'analogical_reasoning': f"{base_context}How might this be similar to something else entirely? What analogy comes to mind?"
-        }
-        
-        return mode_prompts.get(mode, f"{base_context}What thought arises naturally?")
+        # For truly autonomous thinking, we provide minimal direction
+        # Just context (if any) and the simple directive: think
+
+        if context:
+            # When there's context, just present it and let the AI continue thinking
+            return f"{context}\n\nthink"
+        else:
+            # First thought - just think
+            return "think"
 
 
 class InterestDetector:
@@ -482,16 +476,15 @@ class DreamingAI:
         """Main dreaming loop - generates thoughts continuously"""
         thought_count = 0
         max_thoughts = self.config.get('max_thoughts_per_session', 100)
-        
-        # Generate initial seed
-        seed_content = self.seeder.generate_seed()
+
+        # Start with the simplest possible seed: just think
         seed_thought = Thought(
             id=f"thought_{int(time.time() * 1000)}",
             timestamp=datetime.now(),
-            content=seed_content,
+            content="think",
             thought_type='seed'
         )
-        
+
         self._process_thought(seed_thought)
         thought_count += 1
         
