@@ -17,7 +17,7 @@ WORKDIR /app
 COPY . .
 
 # Install Python dependencies
-RUN pip3 install requests
+RUN pip3 install -r requirements.txt
 
 # Create output directory
 RUN mkdir -p dream_outputs

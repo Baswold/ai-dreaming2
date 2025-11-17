@@ -1,0 +1,21 @@
+{
+  "model": "gemma2:2b",
+  "ollama_url": "http://localhost:11434",
+  "db_path": "dreams_philosophical.db",
+  "output_dir": "dream_outputs_philosophical",
+  "reasoning_strategies": {
+    "meta_cognition": 0.30,
+    "analogical_reasoning": 0.25,
+    "free_association": 0.20,
+    "synthesis": 0.15,
+    "exploration": 0.10
+  },
+  "interest_threshold": 0.5,
+  "dream_interval": 10,
+  "max_thoughts_per_session": 50,
+  "enable_web_search": false,
+  "web_search_cache_ttl": 3600,
+  "web_search_max_results": 3,
+  "enable_branching": false,
+  "branch_probability": 0.05
+}

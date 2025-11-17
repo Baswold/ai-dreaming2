@@ -4,14 +4,22 @@
   "db_path": "dreaming_memory.db",
   "output_dir": "dream_outputs",
   "reasoning_strategies": {
-    "free_association": 0.3,
-    "logical_deduction": 0.2,
-    "creative_what_if": 0.2,
+    "free_association": 0.25,
+    "logical_deduction": 0.15,
+    "creative_what_if": 0.15,
     "pattern_recognition": 0.15,
-    "analogical_reasoning": 0.15
+    "analogical_reasoning": 0.1,
+    "meta_cognition": 0.1,
+    "synthesis": 0.05,
+    "exploration": 0.05
   },
   "interest_threshold": 0.4,
-  "dream_interval": 8,
-  "max_thoughts_per_session": 50
+  "dream_interval": 5,
+  "max_thoughts_per_session": 100,
+  "enable_web_search": true,
+  "web_search_cache_ttl": 3600,
+  "web_search_max_results": 3,
+  "enable_branching": false,
+  "branch_probability": 0.1
 }
 

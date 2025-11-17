@@ -11,8 +11,10 @@
 - [x] Containerize the LLM environment
 
 ### Phase 3: Implement web search integration for agents
-- [ ] Choose a web search API or method
-- [ ] Integrate web search into the LLM
+- [x] Choose a web search API or method (DuckDuckGo)
+- [x] Integrate web search into the LLM
+- [x] Add web search caching for performance
+- [x] Implement web-informed reasoning mode
 
 ### Phase 4: Create multi-agent conversation system without system prompts
 - [x] Design the thinking loop logic

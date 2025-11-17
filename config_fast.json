@@ -1,0 +1,20 @@
+{
+  "model": "qwen2.5:0.5b",
+  "ollama_url": "http://localhost:11434",
+  "db_path": "dreams_fast.db",
+  "output_dir": "dream_outputs_fast",
+  "reasoning_strategies": {
+    "free_association": 0.40,
+    "creative_what_if": 0.30,
+    "pattern_recognition": 0.20,
+    "exploration": 0.10
+  },
+  "interest_threshold": 0.3,
+  "dream_interval": 2,
+  "max_thoughts_per_session": 100,
+  "enable_web_search": false,
+  "web_search_cache_ttl": 3600,
+  "web_search_max_results": 2,
+  "enable_branching": false,
+  "branch_probability": 0.05
+}
