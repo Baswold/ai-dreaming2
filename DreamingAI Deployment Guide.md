@@ -41,9 +41,21 @@ When the AI starts dreaming, you'll see output like:
 💡 [14:23:31] REASONING (Score: 0.45)
    What if consciousness forms patterns the way crystals do?
 
-🌟 [14:23:39] GOLD STRIKE (Score: 0.72)
-✨ The lattice of awareness - perhaps consciousness isn't produced 
-   by the brain but crystallized by it!
+🔍 [14:23:39] WEB SEARCH
+   Query: what are crystal lattice structures
+   Based on what I learned, crystal lattices have repeating 3D patterns...
+
+   📚 Found 3 results:
+   1. Crystal Structure (wikipedia)
+      A crystal structure is described by a lattice...
+   2. Lattice (group) (wikipedia)
+      In mathematics and physics, a lattice is a space...
+
+🌟 [14:23:50] GOLD STRIKE (Score: 0.75)
+✨ The lattice of awareness - perhaps consciousness isn't produced
+   by the brain but crystallized by it! And just like crystal lattices,
+   different minds might have different "cognitive lattice structures"!
+   🔍 Searched: what are crystal lattice structures
 ```
 
 ## 🔧 Configuration
@@ -53,6 +65,8 @@ Edit `config.json` to customize:
 - `max_thoughts_per_session`: Maximum thoughts per session
 - `model`: Which Ollama model to use
 - `interest_threshold`: Minimum score for "interesting" thoughts
+- `enable_web_search`: Enable/disable web search (true/false)
+- `search_cache_duration_hours`: How long to cache search results (default: 24)
 
 ## 📁 Output Files
 
@@ -122,6 +136,8 @@ Unlike traditional AI systems that need prompts and goals, DreamingAI:
 - Develops its own interests over time
 - Records breakthrough insights automatically
 - Runs completely locally for privacy
+- **NEW: Satisfies its own curiosity** by searching the web when it encounters interesting questions
+- **NEW: Learns from external knowledge** and integrates it into its reasoning
 
-The system demonstrates that intelligence can emerge from the process of thinking itself, without external direction or predetermined objectives.
+The system demonstrates that intelligence can emerge from the process of thinking itself, without external direction or predetermined objectives. With web search integration, the AI can now expand its knowledge autonomously, making it even more capable of generating novel insights and discoveries.
 

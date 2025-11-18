@@ -5,9 +5,10 @@ DreamingAI is an experimental autonomous reasoning system that allows a local la
 ## Features
 
 - **Promptless thinking** – the AI starts with a completely blank slate and develops its own train of thought.
-- **Multiple reasoning strategies** – free association, logical deduction, creative "what if" speculation, pattern recognition and analogical reasoning.
+- **Multiple reasoning strategies** – free association, logical deduction, creative "what if" speculation, pattern recognition, analogical reasoning, and curiosity-driven web search.
+- **Curiosity-driven web search** – automatically detects when the AI expresses curiosity and performs web searches to gather information from Wikipedia and DuckDuckGo.
 - **Interest detection** – automatically identifies interesting thoughts and flags potential "gold strikes".
-- **Memory system** – short term context and an SQLite database for long‑term storage of ideas.
+- **Memory system** – short term context and an SQLite database for long‑term storage of ideas with search result caching.
 - **Local model support** – works with [Ollama](https://ollama.ai) and is optimised for small models that can run on modest hardware.
 
 See `DreamingAI - Autonomous Reasoning System.md` for a deeper explanation of the philosophy and inner workings.

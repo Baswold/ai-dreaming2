@@ -6,9 +6,10 @@ A Python application that runs continuous reasoning loops on local language mode
 
 - **No System Prompts**: AI agents start with completely blank slates and develop their own thinking patterns
 - **Autonomous Reasoning**: Self-generating thought chains without user intervention
-- **Multiple Reasoning Modes**: Free association, logical deduction, creative "what if" scenarios, pattern recognition, and analogical reasoning
+- **Multiple Reasoning Modes**: Free association, logical deduction, creative "what if" scenarios, pattern recognition, analogical reasoning, and curiosity-driven web search
+- **Curiosity-Driven Web Search**: Automatically detects when AI expresses curiosity and performs web searches using DuckDuckGo and Wikipedia
 - **Interest Detection**: Automatically identifies "golden" insights and discoveries
-- **Memory System**: Short-term context and long-term storage of thoughts and discoveries
+- **Memory System**: Short-term context and long-term storage of thoughts and discoveries with search result caching
 - **Local Model Support**: Works with Ollama, optimized for small models like 2B parameters
 - **Extensible Architecture**: Modular design for adding new reasoning strategies
 
@@ -61,15 +62,18 @@ Edit `config.json` to customize the dreaming experience:
 {
   "model": "gemma2:2b",              // Ollama model to use
   "ollama_url": "http://localhost:11434",
+  "enable_web_search": true,         // Enable/disable web search feature
+  "search_cache_duration_hours": 24, // How long to cache search results
   "dream_interval": 8,               // Seconds between thoughts
   "max_thoughts_per_session": 50,    // Max thoughts per session
   "interest_threshold": 0.4,         // Threshold for interesting thoughts
   "reasoning_strategies": {          // Weights for different reasoning modes
-    "free_association": 0.3,
-    "logical_deduction": 0.2,
+    "free_association": 0.25,
+    "logical_deduction": 0.15,
     "creative_what_if": 0.2,
     "pattern_recognition": 0.15,
-    "analogical_reasoning": 0.15
+    "analogical_reasoning": 0.15,
+    "curiosity_driven_search": 0.10  // NEW: Web search mode
   }
 }
 ```
@@ -89,8 +93,25 @@ Processes thoughts through different modes:
 - **Creative What-If**: Explore hypothetical scenarios
 - **Pattern Recognition**: Find connections between ideas
 - **Analogical Reasoning**: Draw parallels with other concepts
+- **Curiosity-Driven Search**: Express curiosity and search the web for answers
 
-### 3. Interest Detection
+### 3. Web Search Integration (NEW!)
+The AI can now satisfy its curiosity by searching the web:
+- **Automatic Curiosity Detection**: Recognizes questions and expressions of interest in thoughts
+- **Multi-Source Search**: Searches both DuckDuckGo and Wikipedia automatically
+- **Smart Source Selection**: Uses Wikipedia for encyclopedic queries, DuckDuckGo for general searches
+- **Result Caching**: Caches search results for 24 hours to avoid redundant queries
+- **Contextual Integration**: Incorporates search results into the reasoning process naturally
+- **Interest Boost**: Thoughts involving web searches get a +0.2 interest score boost
+
+When the AI thinks "What is quantum entanglement?" or "I wonder about the history of consciousness studies", it will automatically:
+1. Detect the curiosity in the thought
+2. Extract a search query
+3. Search Wikipedia and/or DuckDuckGo
+4. Incorporate the findings into its next thought
+5. Continue reasoning with this new information
+
+### 4. Interest Detection
 Identifies valuable thoughts based on:
 - Keywords indicating discovery or insight
 - Questions and exclamations (curiosity/excitement)
@@ -116,8 +137,24 @@ Identifies valuable thoughts based on:
 💡 [14:23:31] REASONING (Score: 0.45)
    What if consciousness forms patterns the way crystals do? Both emerge from simple rules creating complex beauty.
 
-🌟 [14:23:39] GOLD STRIKE (Score: 0.72)
-✨ The lattice of awareness - perhaps consciousness isn't produced by the brain but crystallized by it, like how temperature and pressure create diamonds from carbon. The brain as a consciousness crystallization chamber!
+🔍 [14:23:39] WEB SEARCH
+   Query: what are crystal lattice structures
+   Based on what I learned about crystal lattices, they have repeating 3D patterns...
+
+   📚 Found 3 results:
+   1. Crystal Structure (wikipedia)
+      A crystal structure is described by a lattice and atomic basis...
+   2. Lattice (group) (wikipedia)
+      In mathematics and physics, a lattice is a space group...
+   3. Crystal - Wikipedia (duckduckgo)
+      Crystals are solid materials with atoms arranged in patterns...
+
+💡 [14:23:50] REASONING (Score: 0.62)
+   Fascinating! Crystal lattices repeat in 3D space. What if thoughts form similar repeating patterns in conceptual space?
+
+🌟 [14:24:01] GOLD STRIKE (Score: 0.75)
+✨ The lattice of awareness - perhaps consciousness isn't produced by the brain but crystallized by it, like how temperature and pressure create diamonds from carbon. The brain as a consciousness crystallization chamber! And just as crystal lattices have different symmetries, maybe different minds have different "cognitive lattice structures" that determine how they process reality!
+   🔍 Searched: what are crystal lattice structures
 ```
 
 ## Recommended Models
@@ -194,11 +231,14 @@ self.domain_specific_keywords = [
 
 ```
 DreamingAI
-├── ThoughtSeeder      # Generates initial thinking seeds
-├── ReasoningEngine    # Processes thoughts through different modes
-├── InterestDetector   # Identifies valuable insights
-├── MemorySystem      # Manages short/long-term thought storage
-└── OutputManager     # Handles display and file output
+├── ThoughtSeeder        # Generates initial thinking seeds
+├── ReasoningEngine      # Processes thoughts through different modes
+│   ├── WebSearchEngine  # NEW: Handles web searches (DuckDuckGo + Wikipedia)
+│   └── CuriosityDetector # NEW: Detects questions and curiosity
+├── InterestDetector     # Identifies valuable insights
+├── MemorySystem        # Manages short/long-term thought storage
+│   └── SearchCache      # NEW: Caches search results
+└── OutputManager       # Handles display and file output
 ```
 
 ## Contributing
@@ -210,6 +250,9 @@ The system is designed to be extensible. Areas for contribution:
 3. **Memory Enhancements**: More sophisticated context management
 4. **UI Improvements**: Web interface for monitoring dreams
 5. **Model Integration**: Support for other local LLM frameworks
+6. **Search Source Expansion**: Add more search backends (Brave, Perplexity, etc.)
+7. **Advanced Curiosity Detection**: Improve query extraction and curiosity recognition
+8. **Search Result Processing**: Better information extraction and summarization
 
 ## Philosophy
 
